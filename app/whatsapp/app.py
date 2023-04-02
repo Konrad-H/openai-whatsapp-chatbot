@@ -17,6 +17,8 @@ from app.handlers import (
 )
 from app.whatsapp.chat import Sender, OpenAIChatManager
 
+import openai
+
 # from chat.handlers.image import image_captioning
 
 # Load environment variables and configurations for the app
@@ -39,6 +41,9 @@ chat_options = dict(
     voice_transcription=True,
     allow_images=True,
 )
+
+openai.api_key = os.environ.get("OPENAI_API_KEY")
+
 model_options = dict(
     model=os.environ.get("CHAT_MODEL", "gpt-3.5-turbo"),
     max_tokens=int(os.environ.get("MAX_TOKENS", 1000)),
