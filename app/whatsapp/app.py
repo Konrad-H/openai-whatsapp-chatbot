@@ -19,7 +19,7 @@ from app.whatsapp.chat import Sender, OpenAIChatManager
 
 import openai
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 # from chat.handlers.image import image_captioning
 
@@ -28,6 +28,8 @@ load_dotenv(find_dotenv())
 logging.basicConfig()
 logger = logging.getLogger("WP-APP")
 logger.setLevel(logging.DEBUG)
+
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # chat agent configuration
 # start_template = os.environ.get("CHAT_START_TEMPLATE")
