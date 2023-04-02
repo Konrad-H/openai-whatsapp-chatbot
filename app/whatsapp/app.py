@@ -30,7 +30,7 @@ logger = logging.getLogger("WP-APP")
 logger.setLevel(logging.DEBUG)
 
 # chat agent configuration
-start_template = os.environ.get("CHAT_START_TEMPLATE")
+# start_template = os.environ.get("CHAT_START_TEMPLATE")
 # if os.path.exists(start_template):
 #     with open(start_template, "r") as f:
 #         start_template = f.read()
@@ -38,7 +38,7 @@ start_template = os.environ.get("CHAT_START_TEMPLATE")
 chat_options = dict(
     model=os.environ.get("CHAT_MODEL", "gpt-3.5-turbo"),
     agent_name=os.environ.get("AGENT_NAME"),
-    start_system_message=start_template,
+    start_system_message=os.environ.get("CHAT_START_TEMPLATE"),
     goodbye_message="Goodbye! I'll be here if you need me.",
     voice_transcription=True,
     allow_images=True,
