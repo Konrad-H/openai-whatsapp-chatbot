@@ -65,11 +65,11 @@ chat_client = TwilioWhatsAppClient(
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def sayHello():
     return 'Say Hello to my assistant'
 
 @app.route('/random')
-def index():
+def sayRandom():
     return openai.Completion.create(
     model="text-davinci-003",
     prompt="Please say something random",
