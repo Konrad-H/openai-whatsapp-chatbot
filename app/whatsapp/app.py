@@ -80,6 +80,10 @@ def sayRandom():
     presence_penalty=0
     )
 
+@app.route('/agent')
+def sayAgent():
+    return os.environ.get("AGENT_NAME")
+
 
 @app.route("/whatsapp/reply", methods=["POST"])
 async def reply_to_whatsapp_message():
@@ -123,7 +127,7 @@ async def reply_to_whatsapp_message():
         chat.add_message(f"[img:\"{img_prompt}\"]", role="system")
         await check_and_send_image_generation(img_prompt, chat, client=chat_client)
     # save the chat
-    chat.save()
+    chat.save() 
     logger.info(
         f"--------------\nConversation:\n{chat.get_conversation()}\n----------------"
     )
