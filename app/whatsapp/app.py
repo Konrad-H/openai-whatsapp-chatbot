@@ -68,6 +68,18 @@ app = Flask(__name__)
 def index():
     return 'Say Hello to my assistant'
 
+@app.route('/random')
+def index():
+    return openai.Completion.create(
+    model="text-davinci-003",
+    prompt="Please say something random",
+    temperature=0.5,
+    max_tokens=256,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0
+    )
+
 
 @app.route("/whatsapp/reply", methods=["POST"])
 async def reply_to_whatsapp_message():
