@@ -64,6 +64,10 @@ chat_client = TwilioWhatsAppClient(
 # instance the app
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return 'Say Hello to my assistant'
+
 
 @app.route("/whatsapp/reply", methods=["POST"])
 async def reply_to_whatsapp_message():
