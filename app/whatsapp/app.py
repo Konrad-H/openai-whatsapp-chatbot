@@ -29,9 +29,9 @@ logger.setLevel(logging.DEBUG)
 
 # chat agent configuration
 start_template = os.environ.get("CHAT_START_TEMPLATE")
-if os.path.exists(start_template):
-    with open(start_template, "r") as f:
-        start_template = f.read()
+# if os.path.exists(start_template):
+#     with open(start_template, "r") as f:
+#         start_template = f.read()
 
 chat_options = dict(
     model=os.environ.get("CHAT_MODEL", "gpt-3.5-turbo"),
