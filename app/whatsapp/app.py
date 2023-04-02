@@ -31,6 +31,8 @@ logger.setLevel(logging.DEBUG)
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
+AGENT_NAME = os.environ.get("AGENT_NAME") 
+
 # chat agent configuration
 # start_template = os.environ.get("CHAT_START_TEMPLATE")
 # if os.path.exists(start_template):
@@ -96,6 +98,7 @@ async def reply_to_whatsapp_message():
         name=request.values.get("ProfileName", request.values.get("From")),
     )
     chat = OpenAIChatManager.get_or_create(sender, logger=logger, **chat_options)
+    CHATTER = sender.name
     chat.start_system_message = chat_options.get("start_system_message").format(
         user=sender.name, today=datetime.now().strftime("%Y-%m-%d")
     )
